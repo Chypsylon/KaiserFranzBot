@@ -20,7 +20,7 @@ class RedditLinker:
         
         matches = self.subRegex.findall(message.content)
 
-        links = ["https://reddit.com/r/" + match[1] for match in matches if match[1].lower() not in [x.lower() in self.subBlacklist]]
+        links = ["https://reddit.com/r/" + match[1] for match in matches if match[1].lower() not in [x.lower() for x in self.subBlacklist]]
         if len(links):
             await self.bot.send_message(message.channel, "\n".join(links))
 
